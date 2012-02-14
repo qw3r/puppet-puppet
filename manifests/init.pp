@@ -5,7 +5,7 @@ class puppet {
 			group   => root,
 			mode    => 0644,
 			alias   => "puppet.conf",
-			source  => "puppet:///modules/puppet/common/etc/puppet/puppet-${config}.conf",
+			source  => "puppet:///modules/puppet/etc/puppet/puppet-${config}.conf",
 			notify  => Service["puppet"],
 			require => Package["puppet"],			
 		}
@@ -16,7 +16,7 @@ class puppet {
 		group   => root,
 		mode    => 0644,
 		alias   => "puppet",
-		source  => "puppet:///modules/puppet/common/etc/default/puppet",
+		source  => "puppet:///modules/puppet/etc/default/puppet",
 		notify  => Service["puppet"],
 		require => Package["puppet"],
 	}
@@ -26,7 +26,7 @@ class puppet {
 		group   => root,
 		mode    => 0644,
 		alias   => "namespaceauth.conf",
-		content => template("puppet/common/etc/puppet/namespaceauth.conf.erb"),
+		content => template("puppet/etc/puppet/namespaceauth.conf.erb"),
 		notify  => Service["puppet"],
 		require => Package["puppet"],
 	}
